@@ -10,9 +10,6 @@ def get_unique_job_types(path):
     return lista
 
 
-print(get_unique_job_types("src/jobs.csv"))
-
-
 def filter_by_job_type(jobs, job_type):
     """Filters a list of jobs by job_type
 
@@ -41,9 +38,6 @@ def get_unique_industries(path):
     return lista
 
 
-print(get_unique_industries("src/jobs.csv"))
-
-
 def filter_by_industry(jobs, industry):
     """Filters a list of jobs by industry
 
@@ -63,39 +57,28 @@ def filter_by_industry(jobs, industry):
 
 
 def get_max_salary(path):
-    """Get the maximum salary of all jobs
+    get_all_max_salary = read(path)
+    lista = []
+    for max_length in get_all_max_salary:
+        if max_length["max_salary"].isnumeric():
+            lista.append(int(max_length["max_salary"]))
+    print(lista, "\n")
+    return max(lista)
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The maximum salary paid out of all job opportunities
-    """
-    pass
+print(get_max_salary("src/jobs.csv"))
 
 
 def get_min_salary(path):
-    """Get the minimum salary of all jobs
+    get_all_min_salary = read(path)
+    lista = []
+    for min_length in get_all_min_salary:
+        if min_length["min_salary"].isnumeric():
+            lista.append(int(min_length["min_salary"]))
+    return min(lista)
 
-    Must call `read`
 
-    Parameters
-    ----------
-    path : str
-        Must be passed to `read`
-
-    Returns
-    -------
-    int
-        The minimum salary paid out of all job opportunities
-    """
-    pass
+print(get_min_salary("src/jobs.csv"))
 
 
 def matches_salary_range(job, salary):
